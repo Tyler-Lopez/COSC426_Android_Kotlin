@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity() {
                 httpConnection.connect()
                 val inputStream = httpConnection.inputStream
                 val json = BufferedReader(InputStreamReader(inputStream)).readLine()
-                // https://stackoverflow.com/questions/41928803/how-to-parse-json-in-kotlin
                 // Weather report contains ALL data from JSON
                 val weatherReport = Gson().fromJson(json, WeatherReport::class.java)
                 cities.add(
