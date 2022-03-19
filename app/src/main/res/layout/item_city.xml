@@ -4,34 +4,82 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_vertical"
-    android:padding="16dp">
+    android:paddingHorizontal="16dp">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cvCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/teal_200"
-        app:cardCornerRadius="4dp"
+        app:cardUseCompatPadding="true"
         app:cardElevation="4dp"
+        app:cardMaxElevation="4dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/card_background"
+            android:src="@drawable/gradient_clouds"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/card_background_side"
+            android:src="@drawable/linear_gradient_horizontal_to_alpha"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:layout_gravity="center_vertical"
             android:padding="16dp">
 
-            <TextView
-                android:id="@+id/tvTitle"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/roboto_regular"
-                android:text="Title"
-                android:textColor="#FFFFFF"
-                android:textSize="32sp" />
+                android:layout_alignParentStart="true"
+                android:orientation="vertical">
 
+
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Title"
+                    android:layout_gravity="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="32sp"
+
+                    android:shadowColor="@color/black"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    />
+
+                <TextView
+                    android:id="@+id/tvSubtext"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Subtitle"
+                    android:layout_below="@id/tvTitle"
+                    android:textColor="#ded9e2"
+                    android:textSize="24sp"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,8 +93,12 @@
                     android:fontFamily="@font/roboto_regular"
                     android:text="25"
                     android:textAlignment="gravity"
-                    android:textColor="#FFFFFF"
-                    android:textSize="64sp" />
+                    android:textColor="@color/white"
+                    android:textSize="64sp"
+                    android:shadowColor="#2b2d42"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="3"/>
 
                 <TextView
                     android:id="@+id/tvDegree"
@@ -54,9 +106,13 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_thin"
                     android:text="°"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/egg_blue"
                     android:textSize="64sp"
-                    app:flow_verticalBias="0.5" />
+                    app:flow_verticalBias="0.5"
+                    android:shadowColor="#2b2d42"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="3"/>
             </LinearLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

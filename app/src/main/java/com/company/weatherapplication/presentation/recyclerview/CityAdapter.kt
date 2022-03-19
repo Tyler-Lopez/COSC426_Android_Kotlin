@@ -1,16 +1,21 @@
 package com.company.weatherapplication.presentation.recyclerview
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.company.weatherapplication.R
 import com.company.weatherapplication.data.City
 import com.company.weatherapplication.databinding.ItemCityBinding
 
 class CityAdapter(
     // Take list, set data of list to corresponding items of recycler view
     private val cities: MutableList<City>,
+    var isCelsius: Boolean,
+    private val context: Context,
     val onClick: (City) -> Unit
-): RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
+) : RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
 
     inner class CityViewHolder(val binding: ItemCityBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -26,7 +31,25 @@ class CityAdapter(
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {
         holder.binding.apply {
             tvTitle.text = cities[position].cityName
-            tvTemp.text = "${cities[position].temp}"
+            tvSubtext.text = cities[position].weatherCondition
+            tvTemp.text = when (isCelsius) {
+                true -> "%.1f".format(cities[position].temp - 273.15)
+                false -> "%.1f".format((cities[position].temp - 273.15) * (9.0/5.0) + 32)
+            }
+            cardBackground.setImageDrawable(
+                ContextCompat.getDrawable(
+                    context,
+                    when (cities[position].weatherCondition) {
+                        "Thunderstorm" -> R.drawable.gradient_thunderstorm
+                        "Drizzle" -> R.drawable.gradient_drizzle
+                        "Rain" -> R.drawable.gradient_rain
+                        "Snow" -> R.drawable.gradient_snow
+                        "Clouds" -> R.drawable.gradient_clouds
+                        "Clear" -> R.drawable.gradient_clear
+                        else -> R.drawable.gradient_clouds
+                    }
+                )
+            )
         }
         // On click, callback the City
         holder.itemView.setOnClickListener {

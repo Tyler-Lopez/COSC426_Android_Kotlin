@@ -1,9 +1,11 @@
 package com.company.weatherapplication
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.company.weatherapplication.data.City
 import com.company.weatherapplication.data.ObservedCities
@@ -27,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cityAdapter: CityAdapter
     private val cities: MutableList<City> = mutableListOf()
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Initialize binding before set content view
@@ -34,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding?.root)
 
         rvCities = binding!!.rvCities
-        cityAdapter = CityAdapter(cities) {
+        cityAdapter = CityAdapter(cities, false, ctx) {
 
         }
 
@@ -60,13 +63,29 @@ class MainActivity : AppCompatActivity() {
                     City(
                         weatherReport.main.temp,
                         zipcode,
+                        weatherReport.weather[0].main,
                         weatherReport.name,
                         "Todo"
                     )
                 )
+                println(cities[cities.lastIndex].weatherCondition)
                 runOnUiThread { cityAdapter.notifyItemChanged(cities.lastIndex)  }
             }
         }.start()
+
+        binding!!.celciusButton.setOnClickListener {
+            binding!!.celciusButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.gold))
+            binding!!.fahrenheitButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.egg_blue))
+            cityAdapter.isCelsius = true
+            cityAdapter.notifyDataSetChanged()
+        }
+
+        binding!!.fahrenheitButton.setOnClickListener {
+            binding!!.fahrenheitButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.gold))
+            binding!!.celciusButton.setTextColor(ContextCompat.getColor(applicationContext, R.color.egg_blue))
+            cityAdapter.isCelsius = false
+            cityAdapter.notifyDataSetChanged()
+        }
 
     }
 

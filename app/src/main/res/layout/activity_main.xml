@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/linear_gradient_dark"
+    android:background="@drawable/linear_gradient_very_dark"
     tools:context=".MainActivity">
 
 
@@ -23,44 +23,77 @@
         android:id="@+id/nested_constrain_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:padding="32dp"
+        android:background="@drawable/linear_gradient_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        >
+        app:layout_constraintStart_toStartOf="parent">
 
+        <TextView
+            android:id="@+id/plus_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+
+            android:text="+"
+            android:textColor="@color/egg_blue"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:shadowColor="#2b2d42"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="3"/>
         <TextView
             android:id="@+id/celcius_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+
             android:text="C "
-            android:textColor="@color/black"
-            android:textSize="32sp"
+            android:textColor="@color/egg_blue"
+            android:textSize="48sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:shadowColor="#2b2d42"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="3"/>
 
         <TextView
             android:id="@+id/forward_slash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
             android:text="/"
-            android:textColor="@color/black"
+
+            android:textColor="@color/egg_blue"
             android:textSize="32sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/celcius_button"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:shadowColor="#2b2d42"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="3"/>
 
         <TextView
             android:id="@+id/fahrenheit_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
             android:text=" F"
-            android:textColor="@color/black"
-            android:textSize="32sp"
+            android:textColor="@color/gold"
+            android:textSize="48sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/forward_slash"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:shadowColor="#2b2d42"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="3"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
