@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detailed_layout_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4D6CFF"
+    tools:context=".DetailedActivity">
+
+    <com.company.weatherapplication.ClimaconView
+        android:id="@+id/main_weather_climacon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/climacons_cloud"
+        android:textColor="#FFFFFF"
+        android:textSize="224sp"
+        app:layout_constraintBottom_toTopOf="@id/main_weather_status"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/main_weather_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clouds"
+        android:textColor="#FFFFFF"
+        android:textFontWeight="100"
+        android:textSize="64sp"
+        app:layout_constraintBottom_toBottomOf="@id/main_weather_location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_weather_climacon" />
+
+    <TextView
+        android:id="@+id/main_weather_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Ann Arbor"
+        android:textColor="#FFFFFF"
+        android:textFontWeight="400"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/detail_row"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_weather_status"
+        tools:targetApi="p" />
+    <LinearLayout
+        android:id="@+id/detail_row"
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:background="#AA000000"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/bottom_row"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <LinearLayout
+            android:id="@+id/day_detail_column"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/padding_sm"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/day_detail_temp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="61°"
+                android:textColor="@color/low_alpha_white"
+                android:textFontWeight="200"
+                android:textSize="64sp"
+
+                />
+
+
+            <TextView
+                android:id="@+id/day_detail_high_and_low"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="H 64  L 59"
+                android:textColor="@color/low_alpha_white"
+                android:textFontWeight="200"
+                android:textSize="24sp"
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/day_one_column"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="12dp">
+
+            <TextView
+                android:id="@+id/day_one_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sun"
+                android:textColor="@color/low_alpha_white"
+                android:textFontWeight="200"
+                android:textSize="24sp"
+
+                />
+
+            <com.company.weatherapplication.ClimaconView
+                android:id="@+id/day_one_climacon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/climacons_cloud_medium_rain"
+                android:textColor="@color/low_alpha_white"
+                android:textSize="54sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/day_two_column"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="12dp">
+
+            <TextView
+                android:id="@+id/day_two_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mon"
+                android:textColor="@color/low_alpha_white"
+                android:textFontWeight="200"
+                android:textSize="24sp"
+
+                />
+
+            <com.company.weatherapplication.ClimaconView
+                android:id="@+id/day_two_climacon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/climacons_cloud"
+                android:textColor="@color/low_alpha_white"
+                android:textSize="54sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/day_three_column"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingStart="12dp">
+
+            <TextView
+                android:id="@+id/day_three_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tue"
+                android:textColor="@color/low_alpha_white"
+                android:textFontWeight="200"
+                android:textSize="24sp"
+
+                />
+
+            <com.company.weatherapplication.ClimaconView
+                android:id="@+id/day_three_climacon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/climacons"
+                android:text="!"
+                android:textColor="@color/low_alpha_white"
+                android:textSize="54sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_row"
+        android:layout_width="fill_parent"
+        android:layout_height="144dp"
+        android:background="@drawable/linear_gradient_vertical_to_alpha"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_md"
+        android:text="F"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:shadowColor="#2b2d42"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

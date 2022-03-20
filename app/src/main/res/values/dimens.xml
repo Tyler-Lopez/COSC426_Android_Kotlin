@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_size_default">56dp</dimen>
+    <dimen name="fab_size_mini">40dp</dimen>
+    <dimen name="padding_sm">16dp</dimen>
+    <dimen name="padding_md">32dp</dimen>
+    <dimen name="text_view_width">250dp</dimen>
+</resources>

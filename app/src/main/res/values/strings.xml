@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">WeatherApplication</string>
+
+
+    <!-- City Summary Page -->
+    <string name="day_one_name">Sun</string>
+    <string name="day_two_name">Mon</string>
+    <string name="day_three_name">Tue</string>
+    <string name="summary_weather">Clouds</string>
+    <string name="summary_city">Ann Arbor</string>
+    <string name="summary_temp">61</string>
+    <string name="summary_high_low">H 64  L 59</string>
+
+    <!-- Climacons -->
+    <string name="climacons_thunderstorm">F</string>
+    <string name="climacons_drizzle">6</string>
+    <string name="climacons_snow">:</string>
+    <string name="climacons_rain">*</string>
+    <string name="climacons_clear">I</string>
+    <string name="climacons_cloud">!</string>
+    <string name="climacons_cloud_sun">"</string>
+    <string name="climacons_cloud_moon">#</string>
+    <string name="climacons_cloud_medium_rain">$</string>
+    <string name="climacons_cloud_medium_rain_sun">%</string>
+    <string name="climacons_cloud_medium_rain_moon">&amp;</string>
+    <string name="climacons_cloud_light_rain">\'</string>
+    <string name="climacons_cloud_light_rain_sun">(</string>
+    <string name="climacons_cloud_light_rain_moon">)</string>
+    <string name="climacons_cloud_heavy_rain">*</string>
+    <string name="climacons_cloud_heavy_rain_sun">+</string>
+    <string name="climacons_cloud_heavy_rain_moon">,</string>
 </resources>

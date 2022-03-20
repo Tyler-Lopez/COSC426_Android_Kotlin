@@ -7,13 +7,14 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.company.weatherapplication.R
 import com.company.weatherapplication.data.City
+import com.company.weatherapplication.data.SelectedTemp
 import com.company.weatherapplication.databinding.ItemCityBinding
 
 class CityAdapter(
     // Take list, set data of list to corresponding items of recycler view
     private val cities: MutableList<City>,
-    var isCelsius: Boolean,
     private val context: Context,
+    val deleteItemOnLongClick: (Int) -> Unit,
     val onClick: (City) -> Unit
 ) : RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
 
@@ -32,7 +33,7 @@ class CityAdapter(
         holder.binding.apply {
             tvTitle.text = cities[position].cityName
             tvSubtext.text = cities[position].weatherCondition
-            tvTemp.text = when (isCelsius) {
+            tvTemp.text = when (SelectedTemp.isCelsius) {
                 true -> "%.1f".format(cities[position].temp - 273.15)
                 false -> "%.1f".format((cities[position].temp - 273.15) * (9.0/5.0) + 32)
             }
@@ -54,6 +55,12 @@ class CityAdapter(
         // On click, callback the City
         holder.itemView.setOnClickListener {
             onClick(cities[position])
+        }
+
+        // On long click, deletes city
+        holder.itemView.setOnLongClickListener() {
+            deleteItemOnLongClick(position)
+            true
         }
     }
 
