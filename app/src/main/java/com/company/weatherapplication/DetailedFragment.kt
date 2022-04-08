@@ -30,8 +30,8 @@ class DetailedFragment : Fragment() {
         val viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
         val cityObserver = Observer<City> { selectedCity ->
-            binding!!.dayDetailTemp.text = when (viewModel.isCelsius.value) {
-                true -> "%.1f".format(selectedCity!!.temp - 273.15)
+                    binding!!.dayDetailTemp.text = when (viewModel.isCelsius.value) {
+                        true -> "%.1f".format(selectedCity!!.temp - 273.15)
                 else -> "%.0f".format((selectedCity!!.temp - 273.15) * (9.0/5.0) + 32)
             }
             binding!!.mainWeatherLocation.text =
