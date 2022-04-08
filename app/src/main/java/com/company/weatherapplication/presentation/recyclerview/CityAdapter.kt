@@ -4,16 +4,20 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.company.weatherapplication.R
 import com.company.weatherapplication.data.City
-import com.company.weatherapplication.data.SelectedTemp
 import com.company.weatherapplication.databinding.ItemCityBinding
 
 class CityAdapter(
     // Take list, set data of list to corresponding items of recycler view
     private val cities: MutableList<City>,
     private val context: Context,
+    val celsiusLiveData: LiveData<Boolean>,
+    val lifecycleOwner: LifecycleOwner,
     val deleteItemOnLongClick: (Int) -> Unit,
     val onClick: (City) -> Unit
 ) : RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
@@ -33,10 +37,18 @@ class CityAdapter(
         holder.binding.apply {
             tvTitle.text = cities[position].cityName
             tvSubtext.text = cities[position].weatherCondition
-            tvTemp.text = when (SelectedTemp.isCelsius) {
-                true -> "%.1f".format(cities[position].temp - 273.15)
-                false -> "%.1f".format((cities[position].temp - 273.15) * (9.0/5.0) + 32)
+            // Initially set to F
+            tvTemp.text = "%.1f".format((cities[position].temp - 273.15) * (9.0 / 5.0) + 32)
+            // Listen for changes to C and back to F
+            val celsiusObserver = Observer<Boolean> {
+                tvTemp.text = when (it) {
+                    true -> "%.1f".format(cities[position].temp - 273.15)
+                    false -> "%.1f".format((cities[position].temp - 273.15) * (9.0 / 5.0) + 32)
+                }
             }
+
+            celsiusLiveData.observe(lifecycleOwner, celsiusObserver)
+
             cardBackground.setImageDrawable(
                 ContextCompat.getDrawable(
                     context,
@@ -58,7 +70,8 @@ class CityAdapter(
         }
 
         // On long click, deletes city
-        holder.itemView.setOnLongClickListener() {
+        holder.itemView.setOnLongClickListener()
+        {
             deleteItemOnLongClick(position)
             true
         }
