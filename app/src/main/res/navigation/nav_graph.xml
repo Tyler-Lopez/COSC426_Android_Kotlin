@@ -3,19 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/listFragment">
-
+    app:startDestination="@id/viewPagerFragment">
     <fragment
-        android:id="@+id/listFragment"
-        android:name="com.company.weatherapplication.ListFragment"
-        android:label="ListFragment" >
-        <action
-            android:id="@+id/action_listFragment_to_detailedFragment"
-            app:destination="@id/detailedFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailedFragment"
-        android:name="com.company.weatherapplication.DetailedFragment"
-        android:label="detailed_fragment"
-        tools:layout="@layout/detailed_fragment" />
+        android:id="@+id/viewPagerFragment"
+        android:name="com.company.weatherapplication.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" />
 </navigation>

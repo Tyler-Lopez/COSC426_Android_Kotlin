@@ -6,5 +6,5 @@ import com.company.weatherapplication.data.City
 
 class MainViewModel : ViewModel() {
     var selectedCity: MutableLiveData<City> = MutableLiveData()
-    var isCelsius: MutableLiveData<Boolean> = MutableLiveData()
+    var isCelsius: MutableLiveData<Boolean> = MutableLiveData(false)
 }
